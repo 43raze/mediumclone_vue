@@ -35,13 +35,13 @@
               />
             </fieldset>
 
-            <button class="btn btn-lg btn-primary pull-xs-right">
+            <button
+              class="btn btn-lg btn-primary pull-xs-right"
+              :disabled="isSubmitting"
+            >
               Sign Up
             </button>
           </form>
-
-          <button @click="increaseCounter">Increase counter</button>
-          {{ count }}
         </div>
       </div>
     </div>
@@ -53,19 +53,23 @@ export default {
   name: 'McvRegister',
 
   computed: {
-    count() {
-      return this.$store.state.count
+    isSubmitting() {
+      return this.$store.state.auth.isSubmitting
     }
   },
 
   methods: {
     onSubmit() {
       console.log('Submited Form')
-    },
-
-    increaseCounter() {
-      console.log('increaseCounter')
-      this.$store.commit('increment')
+      this.$store
+        .dispatch('register', {
+          email: 'owna.sgul@gmail.com',
+          username: 'Razee',
+          password: '123456'
+        })
+        .then(user => {
+          console.log('successfully register user', user)
+        })
     }
   }
 }
