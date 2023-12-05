@@ -1,11 +1,11 @@
 import authApi from '@/api/auth'
-import {setItem} from '@/helpers/persistenceStorage'
+import {setItem} from '@/helpers/persistanceStorage'
 
 const state = {
   isSubmitting: false,
+  isLoggedIn: null,
   currentUser: null,
-  validationErrors: null,
-  isLoggedIn: null
+  validationErrors: null
 }
 
 const mutations = {
@@ -16,8 +16,8 @@ const mutations = {
 
   registerSuccess(state, payload) {
     state.isSubmitting = false
-    state.currentUser = payload
     state.isLoggedIn = true
+    state.currentUser = payload
   },
 
   registerFailure(state, payload) {
@@ -30,7 +30,6 @@ const actions = {
   register(context, credentials) {
     return new Promise(resolve => {
       context.commit('registerStart')
-
       authApi
         .register(credentials)
         .then(response => {
