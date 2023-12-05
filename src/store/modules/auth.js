@@ -33,7 +33,6 @@ const actions = {
 
       authApi
         .register(credentials)
-
         .then(response => {
           context.commit('registerSuccess', response.data.user)
           setItem('accessToken', response.data.user.token)
