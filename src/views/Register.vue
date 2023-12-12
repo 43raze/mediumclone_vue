@@ -58,7 +58,7 @@
 </template>
 
 <script>
-import {actionTypes} from '@/store/modules/auth'
+import {ACTION_TYPES} from '@/store/modules/auth'
 import McvValidationErrors from '@/components/ValidationErrors'
 
 export default {
@@ -89,7 +89,7 @@ export default {
   methods: {
     onSubmit() {
       this.$store
-        .dispatch(actionTypes.register, {
+        .dispatch(ACTION_TYPES.register, {
           email: this.email,
           username: this.username,
           password: this.password
