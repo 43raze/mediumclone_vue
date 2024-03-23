@@ -3,11 +3,11 @@
     <div class="container page">
       <div class="row">
         <div class="col-md-6 offset-md-3 col-xs-12">
-          <h1 class="text-xs-center">Sign up</h1>
+          <h1 class="text-xs-center">Sign in</h1>
 
           <p class="text-xs-center">
-            <router-link :to="{name: 'login'}">
-              Have an account?
+            <router-link :to="{name: 'register'}">
+              Need an account?
             </router-link>
           </p>
 
@@ -17,15 +17,6 @@
           ></mcv-validation-errors>
 
           <form @submit.prevent="onSubmit">
-            <fieldset class="form-group">
-              <input
-                class="form-control form-control-lg"
-                type="text"
-                placeholder="Username"
-                v-model="username"
-              />
-            </fieldset>
-
             <fieldset class="form-group">
               <input
                 class="form-control form-control-lg"
@@ -48,7 +39,7 @@
               class="btn btn-lg btn-primary pull-xs-right"
               :disabled="isSubmitting"
             >
-              Sign Up
+              Sign In
             </button>
           </form>
         </div>
@@ -63,7 +54,7 @@ import {ACTION_TYPES} from '@/store/modules/auth'
 import McvValidationErrors from '@/components/ValidationErrors'
 
 export default {
-  name: 'McvRegister',
+  name: 'McvLogin',
 
   components: {
     McvValidationErrors
@@ -72,8 +63,7 @@ export default {
   data() {
     return {
       email: '',
-      password: '',
-      username: ''
+      password: ''
     }
   },
 
@@ -87,9 +77,8 @@ export default {
   methods: {
     onSubmit() {
       this.$store
-        .dispatch(ACTION_TYPES.register, {
+        .dispatch(ACTION_TYPES.login, {
           email: this.email,
-          username: this.username,
           password: this.password
         })
         .then(() => {
