@@ -7,7 +7,7 @@
 
           <p class="text-xs-center">
             <router-link :to="{name: 'login'}">
-              Have an account?
+              Need an account?
             </router-link>
           </p>
 

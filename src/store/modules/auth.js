@@ -44,23 +44,6 @@ const mutations = {
   [MUTATION_TYPES.registerFailure](state, payload) {
     state.isSubmitting = false
     state.validationErrors = payload
-  },
-
-  //login
-  [MUTATION_TYPES.loginStart](state) {
-    state.isSubmitting = true
-    state.validationErrors = null
-  },
-
-  [MUTATION_TYPES.loginSuccess](state, payload) {
-    state.isSubmitting = false
-    state.isLoggedIn = true
-    state.currentUser = payload
-  },
-
-  [MUTATION_TYPES.loginFailure](state, payload) {
-    state.isSubmitting = false
-    state.validationErrors = payload
   }
 }
 
